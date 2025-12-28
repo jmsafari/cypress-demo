@@ -10,11 +10,11 @@
  * 0. check login interface (No login required)   
  * 1. standard user login: (username: 'standard_user' / password: 'secret_sauce')
  * 2. locked_out_user login (username: 'locked_out_user' / password: 'secret_sauce')
- * 3. wrong_credential_user 1 login (username: 'standard_user' / password: 'wrong_password')
+ * 3. wrong_credential_user 1 login (username: 'standard_user' / password: 'wrong_sauce')
  * 4. wrong_credential_user 2 login (username: 'wrong_user' / password: 'secret_sauce')
- * 5. wrong_credential_user 3 login (username: 'wrong_user' / password: 'wrong_password')
+ * 5. wrong_credential_user 3 login (username: 'wrong_user' / password: 'wrong_sauce')
  * 
- * NOTE: all the test users password is 'secret_sauce'
+ * NOTE: all the users used for the tests have the same password: 'secret_sauce'
  */ 
 
 
@@ -69,13 +69,13 @@ describe('Login page and User login', () => {
         {
             context: 'wrong_credential_user 1 login',
             description: 'Wrong user 1: failed login',
-            role: 'wrong_user',
-            password: 'secret_sauce',
+            role: 'standard_user',
+            password: 'wrong_sauce',
             expectedUrl: '/',
             checkUI: () => {
                     cy.get('[data-test="error"]').should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');
-                    cy.get('[data-test="username"]').should('be.visible').and('have.value','wrong_user');
-                    cy.get('[data-test="password"]').should('be.visible').and('have.value','secret_sauce');
+                    cy.get('[data-test="username"]').should('be.visible').and('have.value','standard_user');
+                    cy.get('[data-test="password"]').should('be.visible').and('have.value','wrong_sauce');
                     cy.get('[data-test="login-button"]').should('be.visible').and('have.value','Login');
                     cy.get('[data-test="login-credentials"]').should('exist');
                     cy.get('[data-test="login-password"]').should('exist');
@@ -84,13 +84,13 @@ describe('Login page and User login', () => {
         {
             context: 'wrong_credential_user 2 login',
             description: 'Wrong user 2: failed login',
-            role: 'standard_user',
-            password: 'wrong_sauce',
+            role: 'wrong_user',
+            password: 'secret_sauce',
             expectedUrl: '/',
             checkUI: () => {
                     cy.get('[data-test="error"]').should('be.visible').and('contain', 'Epic sadface: Username and password do not match any user in this service');
-                    cy.get('[data-test="username"]').should('be.visible').and('have.value','standard_user');
-                    cy.get('[data-test="password"]').should('be.visible').and('have.value','wrong_sauce');
+                    cy.get('[data-test="username"]').should('be.visible').and('have.value','wrong_user');
+                    cy.get('[data-test="password"]').should('be.visible').and('have.value','secret_sauce');
                     cy.get('[data-test="login-button"]').should('be.visible').and('have.value','Login');
                     cy.get('[data-test="login-credentials"]').should('exist');
                     cy.get('[data-test="login-password"]').should('exist');
