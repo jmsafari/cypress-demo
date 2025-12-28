@@ -28,9 +28,11 @@
 Cypress.Commands.add('loginAs', (username, password) => {
 //    cy.session(username, () => {
         cy.visit('/')
-        cy.get('[data-test="username"]').type(username)
-        cy.get('[data-test="password"]').type(password)
-        cy.get('[data-test="login-button"]').click()
+        if(username != 'anonymous' && password != ''){
+            cy.get('[data-test="username"]').type(username)
+            cy.get('[data-test="password"]').type(password)
+            cy.get('[data-test="login-button"]').click()
+        }
         
         // On valide qu'on est bien connecté avant de finir la session
         //cy.url().should('include', '/inventory.html');
