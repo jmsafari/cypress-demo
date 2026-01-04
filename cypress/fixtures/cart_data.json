@@ -1,0 +1,41 @@
+{
+
+    "products_indexes":[0,2,5],
+    "page": {
+        "title": "Your Cart",
+        "logo": "Swag Labs",
+        "copyright": "2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy",
+        "url":"/cart.html"
+    },
+    "social_media": [
+        {"name":"facebook", "url":"https://www.facebook.com/saucelabs"},
+        {"name": "twitter", "url":"https://twitter.com/saucelabs"},
+        {"name": "linkedin", "url":"https://www.linkedin.com/company/sauce-labs/"}
+    ],
+
+    "main_menu_links": [
+        {"selector": "reset-sidebar-link", "label": "All Items"},
+        {"selector": "reset-sidebar-link", "label": "About"},
+        {"selector": "reset-sidebar-link", "label": "Logout"},
+        {"selector": "reset-sidebar-link", "label": "Reset App State"}
+    ],
+
+    "cart_list": {
+        "cart_qtity_label":"QTY",
+        "cart_desc_label": "Description"    
+    }
+    ,
+    "buttons": [
+        {
+            "rm_label":"Remove",
+            "continue_shopping":{
+                "label":"Continue Shopping",
+                "redirectTo":"/inventory.html"
+            },
+            "checkout":{
+                "label":"Checkout",
+                "redirectTo":"/checkout-step-one.html"
+            }
+        }
+    ]
+}

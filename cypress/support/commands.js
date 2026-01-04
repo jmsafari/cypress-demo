@@ -25,16 +25,21 @@
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
 
 
-Cypress.Commands.add('loginAs', (username, password) => {
-//    cy.session(username, () => {
-        cy.visit('/')
-        if(username != 'anonymous' && password != ''){
-            cy.get('[data-test="username"]').type(username)
-            cy.get('[data-test="password"]').type(password)
-            cy.get('[data-test="login-button"]').click()
-        }
-        
-        // On valide qu'on est bien connecté avant de finir la session
-        //cy.url().should('include', '/inventory.html');
-//    });
+import products_list from "../fixtures/products.json";
+
+Cypress.Commands.add('loginAndPrepareCart', (user, productsOrderedIndexes) => {
+    
+        cy.visit('/');
+        cy.get('[data-test="username"]').type(user.username);
+        cy.get('[data-test="password"]').type(user.password);
+        cy.get('[data-test="login-button"]').click();
+
+        productsOrderedIndexes.forEach((index) => {
+            cy.get(`[data-test="add-to-cart-${products_list.items[index].ref}"]`).click();
+        });
+
+        cy.get('[data-test="shopping-cart-badge"]')
+            .should('have.text', productsOrderedIndexes.length.toString());
+
+        cy.get('[data-test="shopping-cart-link"]').click();
 });

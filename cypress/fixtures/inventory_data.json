@@ -1,0 +1,30 @@
+{
+    "page": {
+        "title": "Products",
+        "logo": "Swag Labs",
+        "copyright": "2026 Sauce Labs. All Rights Reserved. Terms of Service | Privacy Policy"
+    },
+    "social_media": [
+        {"name":"facebook", "url":"https://www.facebook.com/saucelabs"},
+        {"name": "twitter", "url":"https://twitter.com/saucelabs"},
+        {"name": "linkedin", "url":"https://www.linkedin.com/company/sauce-labs/"}
+    ],
+
+    "product_sorting_options":[
+        {"value":"az", "label":"Name (A to Z)"},
+        {"value":"za", "label":"Name (Z to A)"},
+        {"value":"lohi", "label":"Price (low to high)"},
+        {"value":"hilo", "label":"Price (high to low)"}
+    ],
+
+    "main_menu_links": [
+        {"selector": "reset-sidebar-link", "label": "All Items"},
+        {"selector": "reset-sidebar-link", "label": "About"},
+        {"selector": "reset-sidebar-link", "label": "Logout"},
+        {"selector": "reset-sidebar-link", "label": "Reset App State"}
+    ],
+    "buttons": [
+        {"add_label":"Add to cart"},
+        {"rm_label":"Remove"}
+    ]
+}
